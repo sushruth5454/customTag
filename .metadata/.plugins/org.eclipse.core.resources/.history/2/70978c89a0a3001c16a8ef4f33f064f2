@@ -1,0 +1,185 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>JSP Page</title>
+</head>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+    .loading{
+    display:none;
+    }
+    
+    </style>
+            
+<body style="background: url(https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg); background-size:cover; background-attachment:fixed;">
+<div class="container">
+<div class="row">
+<div class="col m6 offset-m3">
+<div class="card">
+<div class="card-content center-align">
+<h3>Register Here !!</h3>
+<h6 class="msg center-align"></h6>
+<div class="form center-align">
+
+
+
+<!-- Creating Form -->
+
+
+<form action="Register" method="post" id="myform">
+<input type="text" name="user_name" placeholder="Enter user name">
+<input type="password" name="user_pass" placeholder="Enter user Password">
+<input type="email" name="user_email" placeholder="Enter User Email">
+<div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+
+<button type="submit" class="btn">Submit</button>
+
+</form>
+
+</div>
+
+<div class="loading">
+ <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <h1>Please Wait...</h1>
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+</div>4
+
+
+
+
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+$(".btn").onclick(function(){
+	$(".loading").style.display("block");
+	$(".form").style.display("none");
+})
+
+
+
+</script>
+<script>
+
+$(document).ready(function(){
+	console.log("page is ready..")
+	
+	$("#myform").on('submit',function(event){
+		event.preventDefault();  //prevents the default function of submit
+		
+		var f=$(this).serialize();  // it will have data in key-value pairs
+		console.log(f);
+		
+		$('.loading').show();
+		$('.form').hide();
+		
+		$.ajax({
+			url:"Register",
+			data:f,
+			type:'POST',
+			
+			//success function 
+			//success(result,status,jqXHR)  
+			//jqXHR is jqeury XMLHttpRequest
+			success:function(data,textStatus,jqXHR){
+				console.log(data);
+				console.log("Success....")
+				$('.loading').hide();
+				$('.form').show();
+				$(".msg").html(data);
+				$(".msg").addClass("green-text");
+				
+				
+			},
+			//error function to handle when a error occures
+			//error(jqXHR,status,error)
+			error: function(jqXHR,textStatus,errorThrown){
+				console.log(data);
+				console.log("Error....")
+				$(".msg").html("Something Went Wrong...!!");
+				$(".msg").addClass("red-text");
+				
+			}
+		})
+		
+		
+		
+	})
+})
+
+
+
+</script>
+
+</body>
+</html>

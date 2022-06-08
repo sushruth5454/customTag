@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+    <section name="com.ibm.faceted.project.wizardFacetedProjectWizard.com.ibm.etools.webtools.webproject.wizard">
+        <item key="projectTemplate" value="com.ibm.etools.webtools.basicTemplate"/>
+        <item key="coreFacetSet" value="com.ibm.etools.j2ee.ui.webproject.programmingModel.javaee"/>
+        <item key="projectFacets" value="java:11,jst.web:4.0"/>
+        <item key="primaryRuntime"
+              value="com.ibm.etools.j2ee.ui.webproject.programmingModel.javaee:Apache Tomcat v9.0"/>
+        <item key="com.ibm.etools.webtools.javaee.internal.webproject.configuration.deployment.javaee.ui.LAST_EAR"
+              value=""/>
+    </section>
+</section>
